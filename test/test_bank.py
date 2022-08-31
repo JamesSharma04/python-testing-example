@@ -10,9 +10,27 @@ def test_deposit_an_amount_into_the_account():
     # Then the bank account balance should be 100 GBP.
     assert BankAccount.bank_account.balance is 100
 
-def test_bank_account_has_a_name():
-    # When I create a bank account with name of "John Doe"
-    BankAccount.bank_account = BankAccount("John Doe")
+def test_account_name_validation():
+    # Given a bank account 
+    BankAccount.bank_account = BankAccount()
+
+    # when I check the name before setting it
+    BankAccount.bank_account.check_before_setting_name("John", "Doe")
 
     # Then the bank account name should be "John Doe"
-    assert BankAccount.bank_account.name is "John Doe"
+    assert BankAccount.bank_account.firstname is "John" 
+    assert BankAccount.bank_account.lastname is "Doe"
+
+def test_account_name_validation_fails_when_first_name_is_empty():
+    # Given a bank account 
+    BankAccount.bank_account = BankAccount()
+
+    # when I check the name before setting it, then the name should not be set 
+    assert BankAccount.bank_account.check_before_setting_name("", "Doe") is False
+
+def test_account_name_validation_fails_when_last_name_is_empty():
+    # Given a bank account 
+    BankAccount.bank_account = BankAccount()
+
+    # when I check the name before setting it, then the name should not be set 
+    assert BankAccount.bank_account.check_before_setting_name("John", "") is False
