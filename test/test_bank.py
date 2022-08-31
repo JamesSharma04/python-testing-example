@@ -11,12 +11,8 @@ def test_deposit_an_amount_into_the_account():
     assert BankAccount.bank_account.balance is 100
 
 def test_bank_account_has_a_name():
-    # Given a bank account
-    BankAccount.bank_account = BankAccount()
-
-    # When I set the bank account name to "John Doe"
-    BankAccount.bank_account.set_name("John Doe")
+    # When I create a bank account with name of "John Doe"
+    BankAccount.bank_account = BankAccount("John Doe")
 
     # Then the bank account name should be "John Doe"
     assert BankAccount.bank_account.name is "John Doe"
-    

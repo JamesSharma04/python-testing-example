@@ -1,11 +1,8 @@
 class BankAccount:
 
-    def __init__(self):
+    def __init__(self, name: str = None):
         self.balance = 0
-        self.name = None
+        self.name = name
 
     def deposit(self, gbp):
         self.balance = self.balance + gbp
-
-    def set_name(self, name):
-        self.name = name
